@@ -1,6 +1,6 @@
 {
   "name": "rootuire",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Require modules in local project tree",
   "main": "index.js",
   "scripts": {
