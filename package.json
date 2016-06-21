@@ -1,0 +1,29 @@
+{
+  "name": "rootuire",
+  "version": "0.0.1",
+  "description": "Require modules in local project tree",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rand0me/rootuire.git"
+  },
+  "keywords": [
+    "path",
+    "require",
+    "root",
+    "module"
+  ],
+  "author": "rand0me",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rand0me/rootuire/issues"
+  },
+  "homepage": "https://github.com/rand0me/rootuire#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
+  }
+}
