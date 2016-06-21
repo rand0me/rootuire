@@ -1,5 +1,4 @@
 var path       = require('path');
-var rootuire   = require('../');
 var chai       = require('chai');
 
 var expectedModule = 'a test module';
@@ -7,19 +6,32 @@ var expectedModule = 'a test module';
 describe('Rootuire', function() {
 
     it('Should find root relative module', function() {
+        var rootuire = require('../');
+
         chai.expect(
-            rootuire('example/js/components/test')
-        ).to.equal(
             expectedModule
+        ).to.equal(
+            rootuire('example/js/components/test')
         );
     });
 
     it('Should find root relative module within a namespace', function() {
-        rootuire({namespace: 'example/js'});
+        var rootuire = require('../')({namespace: 'example/js'});
+
         chai.expect(
-            rootuire('components/test')
-        ).to.equal(
             expectedModule
+        ).to.equal(
+            rootuire('components/test')
+        );
+    });
+
+    it('Should bubble to a root directory', function () {
+        var rootuire = require('rootuire');
+
+        chai.expect(
+            expectedModule
+        ).to.equal(
+            rootuire('example/js/components/test')
         );
     });
 
