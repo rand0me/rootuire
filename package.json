@@ -4,7 +4,8 @@
   "description": "Require modules in local project tree",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "npm run self-link && mocha",
+    "self-link": "npm link && cd node_modules && npm link rootuire && cd ../",
     "lint": "jshint"
   },
   "repository": {
