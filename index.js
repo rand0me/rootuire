@@ -2,29 +2,75 @@
 
 var path = require('path');
 
-var rootuire = function (arg) {
-    var opts = { namespace: '' };
-    var root = __dirname;
+/**
+ * Rootuire
+ * @constructor
+ */
+var Rootuire = function () {
+    /**
+     * @param string
+     */
+    this.namespace = '';
 
-    opts.namespace = arg.namespace || opts.namespace;
-    root = root.indexOf('node_modules') < 0 ? root : path.join(root, '..', '..');
-
-    if (typeof arg === 'string') {
-        return require(path.join(root, opts.namespace, arg));
-    }
-
-    return function (arg) {
-        if (typeof arg === 'object') {
-            return rootuire(arg);
+    /**
+     * Require a module relative to a project root
+     * @param arg - Object or String
+     * @returns {*}
+     */
+    this.rootuire = function (arg) {
+        if ('object' === typeof arg && arg.namespace) {
+            var newInstance = (new Rootuire()).setNamespace(arg.namespace);
+            return newInstance.rootuire.bind(newInstance);
         }
 
-        if (typeof arg === 'string') {
-            return require(path.join(root, opts.namespace, arg));
+        if ('string' === typeof arg) {
+            return require(this.getModulePath(arg));
         }
 
-        throw Error("Rootuire need an argument to execute");
+        return this.rootuire.bind(this);
     };
+
+    /**
+     * Get Curren working directory or '../../' in browser environment
+     * @returns {string}
+     */
+    this.getCwd = function () {
+        return path.resolve('.');
+    };
+
+    /**
+     * Get a project root directory
+     * @returns {*}
+     */
+    this.getRoot = function () {
+        var cwd = this.getCwd();
+
+        return cwd.indexOf('node_modules') < 0 ? cwd : path.join(cwd, '..', '..');
+    };
+
+    /**
+     * Get a module path
+     * @param arg - String
+     * @returns {*}
+     */
+    this.getModulePath = function (arg) {
+        var cwd  = this.getCwd(),
+            root = this.getRoot(),
+            prefix = cwd === root ? './' : '';
+
+        return prefix + path.relative(cwd, path.join(root, this.namespace, arg));
+    };
+
+    /**
+     * Set a namespace of this instance
+     * @param namespace
+     * @returns {Rootuire}
+     */
+    this.setNamespace = function (namespace) {
+        this.namespace = namespace;
+
+        return this;
+    }
 };
 
-
-module.exports = rootuire;
+module.exports = (new Rootuire()).rootuire();
