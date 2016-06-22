@@ -1,5 +1,7 @@
-# Rootuire
+# Rootuire [![Build Status](https://travis-ci.org/rand0me/require-rootify.svg?branch=master)](https://travis-ci.org/rand0me/require-rootify)
 ## Require a local project dependencies without a "../../"-hell!
+
+[![NPM](https://nodei.co/npm/require-rootify.png)](https://nodei.co/npm/require-rootify/)
 
 ### Before `npm i --save rootuire`:
 ```javascript
