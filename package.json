@@ -1,6 +1,7 @@
 {
   "name": "rootuire",
-  "version": "0.0.55555 "description": "Require modules in local project tree",
+  "version": "0.0.5",
+  "description": "Require modules in local project tree",
   "main": "index.js",
   "scripts": {
     "test": "npm run self-link && mocha",
