@@ -1,7 +1,7 @@
 # Rootuire [![Build Status](https://travis-ci.org/rand0me/rootuire.svg?branch=master)](https://travis-ci.org/rand0me/rootuire)
 ## Require a local project dependencies without a "../../"-hell!
 
-[![NPM](https://nodei.co/npm/rootuire.png)](https://nodei.co/npm/rootuire/)
+[![NPM](https://nodei.co/npm/rootuire.png)](https://nodei.co/npm/rootuire/) [![Greenkeeper badge](https://badges.greenkeeper.io/rand0me/rootuire.svg)](https://greenkeeper.io/)
 
 ### Before `npm i --save rootuire`:
 ```javascript
